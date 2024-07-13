@@ -5,14 +5,12 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 class ResultLoader implements OnClickListener {
 	
-	private Question question;
+	private final Question question;
 
 	ResultLoader(Activity at, Boolean correct, Question q) {
 
@@ -111,13 +109,10 @@ class ResultLoader implements OnClickListener {
 			
 		case R.id.button_correct_question:
 			
-			if (Functions_Internet.isOnline()) {
-				new Functions_MessageBox_Correct(MainActivity.instance,question);
-				v.setEnabled(false);
-				v.setBackgroundResource(R.drawable.button_gray);
-			} else {
-				Toast.makeText(MainActivity.instance, MainActivity.instance.getResources().getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();	
-			}
+			new Functions_MessageBox_Correct(MainActivity.instance,question);
+			v.setEnabled(false);
+			v.setBackgroundResource(R.drawable.button_gray);
+
 			break;
 
 		}
