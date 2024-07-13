@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
+        android:maxHeight="200dp"
+        android:maxWidth="200dp"
+        android:paddingTop="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_big" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="@string/text_start"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        tools:context=".TrivialActivity" />
+
+    <Button
+        android:id="@+id/button_play"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_blue"
+        android:soundEffectsEnabled="false"
+        android:text="@string/button_play" />
+
+</LinearLayout>

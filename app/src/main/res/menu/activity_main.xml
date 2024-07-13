@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_settings"/>
+    <item
+        android:id="@+id/menu_exit"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/menu_exit">
+    </item>
+    <!--
+     <item
+        android:id="@+id/menu_help"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@android: @string/menu_help">
+    </item>
+    -->
+<!--     <item android:id="@+id/menu_ranking" android:icon="@android:drawable/ic_menu_sort_by_size" android:title="@string/menu_ranking"></item> -->
+
+</menu>

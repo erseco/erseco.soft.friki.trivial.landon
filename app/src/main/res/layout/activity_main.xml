@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"          
+    android:id="@+id/LayoutMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    >
+   
+    <LinearLayout  
+    android:id="@+id/LayoutIncludes"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:background="@android:color/background_dark"
+    >
+    
+            <include
+                android:id="@+id/include_trivial"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_trivial"
+                android:visibility="visible" />
+
+            <include
+                android:id="@+id/include_select_category"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_select_category"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/include_select_difficulty"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_select_dificulty"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/include_question"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_question"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/include_result"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_result"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/include_gameover"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_gameover"
+                android:visibility="gone" />
+</LinearLayout>
+
+</RelativeLayout>

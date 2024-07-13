@@ -1,0 +1,48 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/text_select_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/text_select_category"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" 
+            />
+
+        <erseco.soft.friki.trivial.landon.MultiSpinner
+            android:id="@+id/multi_spinner"
+            android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="40sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:soundEffectsEnabled="false"
+            android:text="@string/difficulty_easy"
+             />
+
+        <Button
+            android:id="@+id/category_button_continue"
+            android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="40sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_blue"
+            android:soundEffectsEnabled="false"
+            android:text="@string/button_continue" />
+    </LinearLayout>
+
+</ScrollView>

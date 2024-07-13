@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_gameover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="@string/text_gameover"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="40sp"
+        android:textStyle="bold"
+                android:textColor="@android:color/white"  
+        />
+
+    <TextView
+        android:id="@+id/score_gameover_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white"  
+                android:textSize="40sp"
+        />
+
+    <TextView
+        android:id="@+id/score_gameover_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"  
+                android:textSize="40sp"
+        />
+
+    <LinearLayout
+        android:id="@+id/score_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/highscore_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" 
+                    android:textSize="40sp"
+             />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_playagain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="40sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_blue"
+        android:soundEffectsEnabled="false"
+        android:text="@string/text_gameover_playagain" />
+
+</LinearLayout>

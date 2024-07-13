@@ -1,0 +1,98 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+		<ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="100" />
+        
+        <TextView
+            android:id="@+id/text_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/category_brown"
+            android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/text_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/app_name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:context=".QuestionActivity"
+                    android:textColor="@android:color/white"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/btn_answer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_blue"
+            android:soundEffectsEnabled="false"
+            android:text="@string/app_name"
+            tools:context=".QuestionActivity" />
+
+        <Button
+            android:id="@+id/btn_answer2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_blue"
+            android:soundEffectsEnabled="false"
+            android:text="@string/app_name"
+            tools:context=".QuestionActivity" />
+
+        <Button
+            android:id="@+id/btn_answer3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_blue"
+            android:soundEffectsEnabled="false"
+            android:text="@string/app_name"
+            tools:context=".QuestionActivity" />
+
+        
+<!-- Este botón esta aqui (invisible) para que no se tapen las respuestas por la publicidad -->
+
+
+        
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_blue"
+            android:soundEffectsEnabled="false"
+            android:text="@string/app_name"
+            android:visibility="invisible"
+            tools:context=".QuestionActivity" />                
+        
+    </LinearLayout>
+
+</ScrollView>

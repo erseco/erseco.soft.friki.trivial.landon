@@ -1,0 +1,136 @@
+name: Generated APK AAB (Upload - Create Artifact To Github Action)
+
+env:
+  main_project_module: app
+  playstore_name: Geek Trivia
+
+on:
+  push:
+    branches:
+      - main
+    tags:        
+      - '*'
+  release:
+    types: [published]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set current date as env variable
+        run: echo "date_today=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Set repository name as env variable
+        run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Decode and save keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > app/keystore.jks
+
+      - name: Extract version code from tag
+        if: github.ref_type == 'tag'
+        id: extract_version
+        run: |
+          versionCode=$(echo "${GITHUB_REF}" | sed 's/refs\/tags\///' | sed 's/[^0-9]//g')
+          release_tag=$(echo "${GITHUB_REF}" | sed 's/refs\/tags\///')
+          echo "versionCode=${versionCode}" >> $GITHUB_ENV
+          echo "release_tag=${release_tag}" >> $GITHUB_ENV
+
+      # - name: Update Android versionCode and versionName
+      #   if: github.ref_type == 'tag'
+      #   run: |
+      #     sed -i.bak "s/android:versionCode=\"[0-9]*\"/android:versionCode=\"$versionCode\"/" app/src/main/AndroidManifest.xml
+      #     sed -i.bak "s/android:versionName=\"[^\"]*\"/android:versionName=\"$release_tag\"/" app/src/main/AndroidManifest.xml
+
+
+      - name: Update Android versionCode and versionName in build.gradle
+        if: github.ref_type == 'tag'
+        run: |
+          sed -i.bak "s/versionCode [0-9]*/versionCode $versionCode/" app/build.gradle
+          sed -i.bak "s/versionName \".*\"/versionName \"$release_tag\"/" app/build.gradle
+
+
+      - name: Run gradle tests
+        run: ./gradlew test
+
+      - name: Build gradle project
+        run: ./gradlew build
+
+      - name: Build apk debug project (APK) - ${{ env.main_project_module }} module
+        run: ./gradlew assembleDebug
+
+      - name: Build apk release project (APK) - ${{ env.main_project_module }} module
+        run: ./gradlew assembleRelease
+
+      - name: List generated files
+        run: ls -R app/build/outputs/apk/release/
+
+      - name: Ensure APK exists
+        run: |
+          if [ ! -f app/build/outputs/apk/release/app-release.apk ]; then
+            echo "APK not found!"
+            exit 1
+          fi
+
+      - name: Build app bundle release (AAB) - ${{ env.main_project_module }} module
+        run: ./gradlew ${{ env.main_project_module }}:bundleRelease
+
+      - name: Upload APK Debug - ${{ env.repository_name }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) debug generated
+          path: ${{ env.main_project_module }}/build/outputs/apk/debug/
+
+      - name: Upload APK Release - ${{ env.repository_name }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - APK(s) release generated
+          path: ${{ env.main_project_module }}/build/outputs/apk/release/
+
+      - name: Upload AAB (App Bundle) Release - ${{ env.repository_name }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - App bundle(s) AAB release generated
+          path: ${{ env.main_project_module }}/build/outputs/bundle/release/
+
+      - name: Find zipalign and apksigner tool
+        id: find-zipalign-apksigner
+        run: |
+          echo "ZIPALIGN_PATH=$(find $ANDROID_HOME/build-tools -name zipalign | head -n 1)" >> $GITHUB_ENV
+          echo "APKSIGNER_PATH=$(find $ANDROID_HOME/build-tools -name apksigner | head -n 1)" >> $GITHUB_ENV
+
+      - name: Align the APK
+        if: github.ref_type == 'tag'
+        run: |
+          ${{ env.ZIPALIGN_PATH }} -v -p 4 app/build/outputs/apk/release/app-release.apk app/build/outputs/apk/release/app-release-aligned.apk
+
+      - name: Sign the APK
+        if: github.ref_type == 'tag'
+        run: |
+          ${{ env.APKSIGNER_PATH }} sign --ks app/keystore.jks --ks-key-alias ${{ secrets.KEY_ALIAS }} --ks-pass pass: --key-pass pass: --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --out app/build/outputs/apk/release/app-release-signed-v${{ env.release_tag }}.apk app/build/outputs/apk/release/app-release-aligned.apk
+
+      - name: Create a release on GitHub
+        if: github.ref_type == 'tag'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          artifacts: app/build/outputs/apk/release/app-release-signed-v${{ env.release_tag }}.apk
+          token: ${{ secrets.GITHUB_TOKEN }}

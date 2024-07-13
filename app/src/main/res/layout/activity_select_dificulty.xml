@@ -1,0 +1,59 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/text_select_difficulty"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:context=".QuestionActivity"
+                    android:textColor="@android:color/white"  
+            />
+
+        <Button
+            android:id="@+id/text_difficulty_easy"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_pink"
+            android:soundEffectsEnabled="false"
+            android:text="@string/difficulty_easy"
+            tools:context=".QuestionActivity" />
+
+        <Button
+            android:id="@+id/text_difficulty_medium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_blue"
+            android:soundEffectsEnabled="false"
+            android:text="@string/difficulty_medium"
+            tools:context=".QuestionActivity" />
+
+        <Button
+            android:id="@+id/text_difficulty_hard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_red"
+            android:soundEffectsEnabled="false"
+            android:text="@string/difficulty_hard"
+            tools:context=".QuestionActivity" />
+    </LinearLayout>
+
+</ScrollView>

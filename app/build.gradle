@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'erseco.soft.friki.trivial.landon'    
+    compileSdkVersion 34
+    defaultConfig {
+        applicationId "erseco.soft.friki.trivial.landon"
+        minSdkVersion 14
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("KEYSTORE_FILE") ?: "keystore.jks")
+            storePassword ""
+            keyPassword ""
+            keyAlias "erseco.soft"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }    
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Kotlin dependencies
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"    
+}
+
+// Force Gradle to use specific versions of dependencies
+configurations.all {
+    resolutionStrategy {
+        force "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+        force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
+        force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
+    }
+}

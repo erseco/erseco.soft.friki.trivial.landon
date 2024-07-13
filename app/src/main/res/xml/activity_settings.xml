@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/settings_category_main" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:disableDependentsState="false"
+            android:enabled="true"
+            android:key="sound_enabled"
+            android:summary="@string/settings_option_sound_summary"
+            android:title="@string/settings_option_sound" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="sound_enabled"
+            android:key="tts_enabled"
+            android:summary="@string/settings_option_tts_summary"
+            android:title="@string/settings_option_tts" />
+
+        <ListPreference
+            android:defaultValue="xx"
+            android:entries="@array/languages_name"
+            android:entryValues="@array/languages_code"
+            android:key="language"
+            android:summary="@string/settings_options_language_summary"
+            android:title="@string/settings_options_language" />        
+
+        
+        <CheckBoxPreference
+            android:key="vibrate_enabled"
+            android:summary="@string/settings_option_vibrate_enabled_summary"
+            android:title="@string/settings_option_vibrate_enabled" android:defaultValue="true"/>
+         <CheckBoxPreference
+            android:key="timer_enabled"
+            android:summary="@string/settings_option_timer_enabled_summary"
+            android:title="@string/settings_option_timer_enabled" 
+            android:defaultValue="true" />
+        o9p0'„…„bvcbm,
+        <!-- Require API11
+        <MultiSelectListPreference
+            android:defaultValue="@array/categories_code"
+            android:entries="@array/categories_name"
+            android:entryValues="@array/categories_code"
+            android:key="categories"
+            android:summary="@string/settings_options_categories_summary"
+            android:title="@string/settings_options_categories" />
+		-->
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settings_category_about" >
+        <Preference
+            android:key="version"
+            android:selectable="false"
+            android:summary="0"
+            android:title="@string/app_name" />
+        <!-- Activar la siguiente versión!
+        <Preference
+            android:enabled="false"
+            android:key="score" />
+        <Preference
+            android:enabled="false"
+            android:key="ranking_user" />
+ 		-->            
+    </PreferenceCategory>
+
+</PreferenceScreen>
