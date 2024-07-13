@@ -2,7 +2,7 @@
 
 Geek Trivia is an Android app that allows users to test their knowledge in various areas of geek culture. This immersive app lets you explore questions and challenges that cover everything from movies and series to video games and comics.
 
-![Geek Trivia Screenshot](/Users/ernesto/Library/CloudStorage/Dropbox/Trabajo/git/erseco.soft.friki.trivial.landon/app/src/main/res/drawable-xxhdpi/ic_launcher.png)
+![Geek Trivia Screenshot](app/src/main/res/drawable-xxhdpi/ic_launcher.png)
 
 ## Features
 
