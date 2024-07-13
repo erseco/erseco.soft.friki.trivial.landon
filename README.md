@@ -8,7 +8,6 @@ Geek Trivia is an Android app that allows users to test their knowledge in vario
 
 - Trivia questions about movies, series, video games, and comics.
 - Intuitive user interface for a seamless experience.
-- **Challenge Mode**: Overcome challenges and win virtual prizes!
 
 ## Installation
 
