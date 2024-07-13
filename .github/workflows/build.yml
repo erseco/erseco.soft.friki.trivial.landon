@@ -124,7 +124,7 @@ jobs:
       - name: Sign the APK
         if: github.ref_type == 'tag'
         run: |
-          ${{ env.APKSIGNER_PATH }} sign --ks app/keystore.jks --ks-key-alias ${{ secrets.KEY_ALIAS }} --ks-pass pass: --key-pass pass: --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --out app/build/outputs/apk/release/app-release-signed-v${{ env.release_tag }}.apk app/build/outputs/apk/release/app-release-aligned.apk
+          ${{ env.APKSIGNER_PATH }} sign --ks app/keystore.jks --ks-key-alias erseco.soft --ks-pass pass: --key-pass pass: --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --out app/build/outputs/apk/release/app-release-signed-v${{ env.release_tag }}.apk app/build/outputs/apk/release/app-release-aligned.apk
 
       - name: Create a release on GitHub
         if: github.ref_type == 'tag'
