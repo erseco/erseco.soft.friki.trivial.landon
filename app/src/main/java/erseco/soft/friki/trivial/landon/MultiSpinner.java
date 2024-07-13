@@ -11,7 +11,7 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-public class MultiSpinner extends Spinner implements
+public class MultiSpinner extends androidx.appcompat.widget.AppCompatSpinner implements
         OnMultiChoiceClickListener, OnCancelListener {
 
     private List<String> items;
